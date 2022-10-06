@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class PlasticProduct extends Model
 {
     use HasFactory;
 
@@ -15,27 +15,17 @@ class Project extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'title',
-        'url',
-        'content',
-        'slug',
+        'plastic_product_name',
+        'category',
+        'description',
+        'product_stat',
+        'icon',
         'image',
-        'type_id',
         'user_id',
     ];
-
-    public function type()
-    {
-        return $this->belongsTo(Type::class, 'type_id');
-    }
 
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
-    }
-    
-    public function getRouteKeyName()
-    {
-        return 'slug';
     }
 }

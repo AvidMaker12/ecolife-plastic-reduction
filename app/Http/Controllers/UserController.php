@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use App\Models\User;
 
-class UsersController extends Controller
+class UserController extends Controller
 {
 
     public function list()
@@ -30,15 +30,15 @@ class UsersController extends Controller
     {
 
         $attributes = request()->validate([
-            'first' => 'required',
-            'last' => 'required',
+            'f_name' => 'required',
+            'l_name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required',
         ]);
 
         $user = new User();
-        $user->first = $attributes['first'];
-        $user->last = $attributes['last'];
+        $user->f_name = $attributes['f_name'];
+        $user->l_name = $attributes['l_name'];
         $user->email = $attributes['email'];
         $user->password = $attributes['password'];
         $user->save();
@@ -61,8 +61,8 @@ class UsersController extends Controller
     {
 
         $attributes = request()->validate([
-            'first' => 'required',
-            'last' => 'required',
+            'f_name' => 'required',
+            'l_name' => 'required',
             'email' => [
                 'required',
                 'email',
@@ -71,8 +71,8 @@ class UsersController extends Controller
             'password' => 'nullable',
         ]);
 
-        $user->first = $attributes['first'];
-        $user->last = $attributes['last'];
+        $user->f_name = $attributes['f_name'];
+        $user->l_name = $attributes['l_name'];
         $user->email = $attributes['email'];
 
         if($attributes['password']) $user->password = $attributes['password'];

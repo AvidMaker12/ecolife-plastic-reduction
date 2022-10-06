@@ -2,22 +2,12 @@
 <?= view('layout.header') ?>
 
 <section class="w3-padding">
-        
-    <h2 class="w3-text-blue">About Me!</h2>
+    <!-- SITE WELCOME TITLE -->
+    <h1 class="w3-text-blue">EcoLife Plastic Reduction</h1>
+    <!-- SLOGAN -->
+    <p>The simple web app that helps reduce everyday plastic use.</p>
 
-    <p>
-        Quisque felis ex, pellentesque vel elementum eu, bibendum vel massa. Donec id feugiat 
-        erat. Aliquam commodo rutrum velit, vitae vestibulum purus ullamcorper vestibulum. Orci 
-        varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-    </p>
-
-    <h3>My Skills</h3>
-
-    <ul>
-        <li>PHP</li>
-        <li>Laravel</li>
-        <li>MySQL</li>
-    </ul>
+    <!-- NOTE: Add Plastic Reduction Calculator button/link here. -->
 
 </section>
 

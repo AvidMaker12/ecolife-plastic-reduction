@@ -2,10 +2,12 @@
 
 namespace Database\Factories;
 
+use App\Models\Score;
+use App\Models\ClientStatistic;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-class UserFactory extends Factory
+class ClientAccountFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,10 +19,13 @@ class UserFactory extends Factory
         return [
             'f_name' => $this->faker->firstName(),
             'l_name' => $this->faker->lastName(),
+            'username' => $this->faker->userName(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => 'password',
             'remember_token' => Str::random(10),
+            'score_total' => $this->faker->randomNumber(),
+            'score_id' => Score::all()->random(),
         ];
     }
 

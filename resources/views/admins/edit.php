@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>My Portfolio</title>
+        <title>Console/Admin Accounts/Edit | EcoLife</title>
 
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="/app.css">
@@ -17,16 +17,18 @@
 
         <header class="w3-padding">
 
-            <h1 class="w3-text-red">Portfolio Console</h1>
+            <h1 class="w3-text-red">Edit Administrator Account</h1>
 
-            <?php if(Auth::check()): ?>
-                You are logged in as <?= auth()->user()->first ?> <?= auth()->user()->last ?> | 
+            <?= view('layout_console.header_console') ?>
+
+            <!-- <?php if(Auth::check()): ?>
+                You are logged in as <?= auth()->admin()->f_name ?> <?= auth()->admin()->l_name ?> | 
                 <a href="/console/logout">Log Out</a> | 
                 <a href="/console/dashboard">Dashboard</a> | 
                 <a href="/">Website Home Page</a>
             <?php else: ?>
-                <a href="/">Return to My Portfolio</a>
-            <?php endif; ?>
+                <a href="/">Return to Website Home Page</a>
+            <?php endif; ?> -->
 
         </header>
 
@@ -34,15 +36,15 @@
 
         <section class="w3-padding">
 
-            <h2>Add User</h2>
+            <h2>Edit Administrator Account</h2>
 
-            <form method="post" action="/console/users/add" novalidate class="w3-margin-bottom">
+            <form method="post" action="/console/admins/edit/<?= $admin->id ?>" novalidate class="w3-margin-bottom">
 
                 <?= csrf_field() ?>
 
                 <div class="w3-margin-bottom">
-                    <label for="first">First Name:</label>
-                    <input type="text" name="first" id="first" value="<?= old('first') ?>" required>
+                    <label for="f_name">First Name:</label>
+                    <input type="text" name="f_name" id="f_name" value="<?= old('f_name', $admin->f_name) ?>" required>
                     
                     <?php if($errors->first('first')): ?>
                         <br>
@@ -51,18 +53,18 @@
                 </div>
 
                 <div class="w3-margin-bottom">
-                    <label for="last">Last Name:</label>
-                    <input type="text" name="last" id="last" value="<?= old('last') ?>" required>
-
-                    <?php if($errors->first('last')): ?>
+                    <label for="l_name">Last Name:</label>
+                    <input type="text" name="l_name" id="last" value="<?= old('l_name', $admin->l_name) ?>" required>
+                    
+                    <?php if($errors->first('l_name')): ?>
                         <br>
-                        <span class="w3-text-red"><?= $errors->first('last'); ?></span>
+                        <span class="w3-text-red"><?= $errors->first('l_name'); ?></span>
                     <?php endif; ?>
                 </div>
 
                 <div class="w3-margin-bottom">
                     <label for="email">Email:</label>
-                    <input type="email" name="email" id="email" value="<?= old('email') ?>" required>
+                    <input type="email" name="email" id="email" value="<?= old('email', $admin->email) ?>">
 
                     <?php if($errors->first('email')): ?>
                         <br>
@@ -80,11 +82,11 @@
                     <?php endif; ?>
                 </div>
 
-                <button type="submit" class="w3-button w3-green">Add User</button>
+                <button type="submit" class="w3-button w3-green">Edit Administrator Account</button>
 
             </form>
 
-            <a href="/console/users/list">Back to User List</a>
+            <a href="/console/admins/list">Back to Admin Accounts List</a>
 
         </section>
 
