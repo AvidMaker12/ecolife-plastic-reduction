@@ -39,7 +39,6 @@
                 <li><a href="/console/users/list">Manage Users</a></li> -->
                 <li><a href="/console/plastic-products/list">Plastic Products</a></li>
                 <li><a href="/console/questionnaire/list">Questionnaire</a></li>
-                <li><a href="/console/score/list">Score System</a></li>
                 <li><a href="/console/clients/list">Client Accounts</a></li>
                 <li><a href="/console/admins/list">Admin Accounts</a></li> <!-- NOTE: Rename routing from 'users' to 'admin'. -->
                 <li><a href="/console/logout">Log Out</a></li>

@@ -23,7 +23,6 @@ class CreateClientAccountsTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->integer('score_total');
-            $table->foreignId('score_id');  // Foreign key relationship links to other table via non-plural version of foreign table name followed by linking column name (usually 'id'), and separated by underscore. Example: 'type_id' links to 'types' table 'id' column.
             $table->timestamps();
         });
     }

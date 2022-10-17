@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>My Portfolio</title>
+        <title>Plastic Products | Console | EcoLife</title>
 
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="/app.css">
@@ -14,18 +14,17 @@
     </head>
     <body>
 
-
         <header class="w3-padding">
 
-            <h1 class="w3-text-red">Portfolio Console</h1>
+            <h1 class="w3-text-red">Plastic Products Dashboard</h1>
 
             <?php if(Auth::check()): ?>
-                You are logged in as <?= auth()->user()->first ?> <?= auth()->user()->last ?> | 
+                You are logged in as <?= auth()->user()->f_name ?> <?= auth()->user()->l_name ?> | 
                 <a href="/console/logout">Log Out</a> | 
                 <a href="/console/dashboard">Dashboard</a> | 
                 <a href="/">Website Home Page</a>
             <?php else: ?>
-                <a href="/">Return to My Portfolio</a>
+                <a href="/">Return to Website Home Page</a>
             <?php endif; ?>
 
         </header>
@@ -34,15 +33,15 @@
 
         <section class="w3-padding">
 
-            <h2>Project Image</h2>
+            <h2>Edit Plastic Product Image</h2>
 
             <div class="w3-margin-bottom">
-                <?php if($project->image): ?>
-                    <img src="<?= asset('storage/'.$project->image) ?>" width="200">
+                <?php if($plastic_product->image): ?>
+                    <img src="<?= asset('storage/'.$plastic_product->image) ?>" width="200">
                 <?php endif; ?>
             </div>
 
-            <form method="post" action="/console/projects/image/<?= $project->id ?>" novalidate class="w3-margin-bottom" enctype="multipart/form-data">
+            <form method="post" action="/console/plastic-products/image/<?= $plastic_product->id ?>" novalidate class="w3-margin-bottom" enctype="multipart/form-data">
 
                 <?= csrf_field() ?>
 
@@ -60,7 +59,7 @@
 
             </form>
 
-            <a href="/console/projects/list">Back to Project List</a>
+            <a href="/console/plastic-products/list">Back to Plastic Product List</a>
 
         </section>
 

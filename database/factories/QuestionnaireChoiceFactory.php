@@ -16,8 +16,9 @@ class QuestionnaireChoiceFactory extends Factory
     public function definition()
     {
         return [
+            // Notes: No columns related to 'id', 'images', 'timestamps' are listed here.
             'questionnaire_question_id' => QuestionnaireQuestion::all()->random(),
-            'answers' => $this->faker->sentence(),
+            'choice' => $this->faker->sentence(),
             'user_id' => User::all()->random(),
         ];
     }

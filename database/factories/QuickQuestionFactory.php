@@ -15,6 +15,7 @@ class QuickQuestionFactory extends Factory
     public function definition()
     {
         return [
+            // Notes: No columns related to 'id', 'images', 'timestamps' are listed here.
             'question' => $this->faker->unique()->sentence(),
             'user_id' => User::all()->random(),
         ];

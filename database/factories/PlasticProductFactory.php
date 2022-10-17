@@ -15,6 +15,7 @@ class PlasticProductFactory extends Factory
     public function definition()
     {
         return [
+            // Notes: No columns related to 'id', 'images', 'timestamps' are listed here.
             'plastic_product_name' => $this->faker->unique()->word(),
             'category' => $this->faker->word(),
             'description' => $this->faker->unique()->sentence(),

@@ -14,7 +14,6 @@
     </head>
     <body>
 
-
         <header class="w3-padding">
 
             <h1 class="w3-text-red">Plastic Products Dashboard</h1>
@@ -42,25 +41,25 @@
                 <?php endif; ?>
             </div>
 
-            <form method="post" action="/console/projects/image/<?= $project->id ?>" novalidate class="w3-margin-bottom" enctype="multipart/form-data">
+            <form method="post" action="/console/plastic-products/icon/<?= $plastic_product->id ?>" novalidate class="w3-margin-bottom" enctype="multipart/form-data">
 
                 <?= csrf_field() ?>
 
                 <div class="w3-margin-bottom">
-                    <label for="image">Image:</label>
-                    <input type="file" name="image" id="image" value="<?= old('image') ?>" required>
+                    <label for="icon">Icon:</label>
+                    <input type="file" name="icon" id="icon" value="<?= old('icon') ?>" required>
                     
-                    <?php if($errors->first('image')): ?>
+                    <?php if($errors->first('icon')): ?>
                         <br>
-                        <span class="w3-text-red"><?= $errors->first('image'); ?></span>
+                        <span class="w3-text-red"><?= $errors->first('icon'); ?></span>
                     <?php endif; ?>
                 </div>
 
-                <button type="submit" class="w3-button w3-green">Add Image</button>
+                <button type="submit" class="w3-button w3-green">Add Icon</button>
 
             </form>
 
-            <a href="/console/projects/list">Back to Project List</a>
+            <a href="/console/plastic-products/list">Back to Plastic Product List</a>
 
         </section>
 

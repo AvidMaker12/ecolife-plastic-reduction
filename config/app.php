@@ -13,7 +13,8 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('EcoLife', 'EcoLife'),
+    // 'name' => env('APP_NAME', 'Laravel'),
 
     /*
     |--------------------------------------------------------------------------

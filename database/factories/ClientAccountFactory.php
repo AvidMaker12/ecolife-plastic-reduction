@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Score;
 use App\Models\ClientStatistic;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -25,7 +24,6 @@ class ClientAccountFactory extends Factory
             'password' => 'password',
             'remember_token' => Str::random(10),
             'score_total' => $this->faker->randomNumber(),
-            'score_id' => Score::all()->random(),
         ];
     }
 
@@ -38,6 +36,7 @@ class ClientAccountFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
+                // Notes: No columns related to 'id', 'images', 'timestamps' are listed here.
                 'email_verified_at' => null,
             ];
         });

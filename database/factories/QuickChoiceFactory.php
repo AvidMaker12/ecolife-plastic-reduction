@@ -17,7 +17,7 @@ class QuickChoiceFactory extends Factory
     {
         return [
             'quick_question_id' => QuickQuestion::all()->random(),
-            'answers' => $this->faker->sentence(),
+            'choice' => $this->faker->sentence(),
             'user_id' => User::all()->random(),
         ];
     }

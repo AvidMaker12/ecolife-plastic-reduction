@@ -16,7 +16,8 @@ class CreateQuickChoicesTable extends Migration
         Schema::create('quick_choices', function (Blueprint $table) {
             $table->id();
             $table->foreignId('quick_question_id');
-            $table->string('answers');
+            $table->string('choice');
+            $table->string('icon')->nullable();
             $table->foreignId('user_id');
             $table->timestamps();
         });

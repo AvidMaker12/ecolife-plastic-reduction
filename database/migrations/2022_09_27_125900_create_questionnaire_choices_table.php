@@ -16,8 +16,9 @@ class CreateQuestionnaireChoicesTable extends Migration
         Schema::create('questionnaire_choices', function (Blueprint $table) {
             $table->id();
             $table->foreignId('questionnaire_question_id');
-            $table->string('answers');
-            $table->foreignId('user_id');
+            $table->string('choice');
+            $table->string('icon')->nullable();
+            $table->foreignId('user_id'); // Foreign key relationship links to other table via non-plural version of foreign table name followed by linking column name (usually 'id'), and separated by underscore. Example: 'type_id' links to 'types' table 'id' column.
             $table->timestamps();
         });
     }
