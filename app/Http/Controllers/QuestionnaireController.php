@@ -114,17 +114,34 @@ class QuestionnaireController extends Controller
     // }
 
 
+    public function page1Form(QuestionnaireQuestion $questionnaire_questions)
+    {
+        return view('quick_questionnaire.page1', [
+            'questionnaire_questions' => $questionnaire_questions, // Populate page with data from table 'questionnaire_questions' by storing data in array 'questionnaire_questions', which retreives data from model 'QuestionnaireQuestion' fetch all().
+            'questionnaire_choices' => QuestionnaireChoice::all() // Populate page with data from table 'questionnaire_choices' by storing data in array 'questionnaire_choices', which retreives data from model 'QuestionnaireChoice' fetch all().
+        ]);
+    }
 
     public function page1(QuestionnaireQuestion $questionnaire_questions)
     {  
-        return view('quick_questionnaire.page1', [
+        return view('quick_questionnaire.page2', [
             'questionnaire_questions' => $questionnaire_questions,
+        ]);
+
+        // return redirect('/quick_questionnaire/page2');
+    }
+
+    public function page2Form(QuestionnaireQuestion $questionnaire_questions)
+    {
+        return view('quick_questionnaire.page2', [
+            'questionnaire_questions' => $questionnaire_questions, // Populate page with data from table 'questionnaire_questions' by storing data in array 'questionnaire_questions', which retreives data from model 'QuestionnaireQuestion' fetch all().
+            'questionnaire_choices' => QuestionnaireChoice::all() // Populate page with data from table 'questionnaire_choices' by storing data in array 'questionnaire_choices', which retreives data from model 'QuestionnaireChoice' fetch all().
         ]);
     }
 
     public function page2(QuestionnaireQuestion $questionnaire_questions)
     {  
-        return view('quick_questionnaire.page2', [
+        return view('quick_questionnaire.results', [
             'questionnaire_questions' => $questionnaire_questions,
         ]);
     }
