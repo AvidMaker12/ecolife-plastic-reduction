@@ -10,6 +10,7 @@ use App\Models\QuestionnaireQuestion;
 use App\Models\QuestionnaireChoice;
 use App\Models\QuickQuestion;
 use App\Models\QuickChoice;
+use App\Models\PlasticProduct;
 use App\Models\User;
 
 class QuestionnaireController extends Controller
@@ -116,7 +117,7 @@ class QuestionnaireController extends Controller
     // }
 
 
-    public function quickQuestion1Form(QuickQuestion $quick_questions)
+    public function quickQuestion1(QuickQuestion $quick_questions)
     {
         return view('quick_questionnaire.page1', [
             'quick_questions' => $quick_questions, // Populate page with data from table 'quick_questions' by storing data in array 'quick_questions', which retreives data from model 'QuickQuestion' fetch all().
@@ -124,10 +125,19 @@ class QuestionnaireController extends Controller
         ]);
     }
 
-    public function quickQuestion1Post(QuickQuestion $quick_questions)
-    {         
-        return redirect('/quick_questionnaire/page2');
+    public function quickQuestion2(QuickQuestion $quick_questions)
+    {
+        return view('quick_questionnaire.page2', [
+            'quick_questions' => $quick_questions, // Populate page with data from table 'quick_questions' by storing data in array 'quick_questions', which retreives data from model 'QuickQuestion' fetch all().
+            'quick_choices' => QuickChoice::all(), // Populate page with data from table 'quick_choices' by storing data in array 'quick_choices', which retreives data from model 'QuickChoice' fetch all().
+            'plastic_products' => PlasticProduct::all() // Populate page with data from table 'quick_choices' by storing data in array 'quick_choices', which retreives data from model 'QuickChoice' fetch all().
+        ]);
     }
+
+    // public function quickQuestion1Post(QuickQuestion $quick_questions)
+    // {         
+    //     return redirect('/quick_questionnaire/page2');
+    // }
 
 
 

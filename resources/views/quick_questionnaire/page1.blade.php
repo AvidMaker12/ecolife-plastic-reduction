@@ -42,8 +42,10 @@
         <section>
             <!-- FIX: Implement PHP loop through quick_questionnaire->choices (where question_id = 1), similar to CMS List page. -->
             <?php foreach($quick_choices as $quick_choice): ?>
-                <a href="/quick-calculator/page2/<?= $quick_choice->choice ?>" class="w3-button w3-blue"><?= $quick_choice->choice ?></a>
-                <br>
+                <?php if($quick_choice->quick_question_id == 1): ?>
+                    <a href="/quick-calculator/page2/<?= $quick_choice->id ?>" class="w3-button w3-blue"><?= $quick_choice->choice ?></a>
+                    <br>
+                <?php endif; ?>
             <?php endforeach; ?>
         </section>
 		

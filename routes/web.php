@@ -48,10 +48,12 @@ Route::get('/about', 'PageController@about');
 
 
 // ROUTE: ECO QUICK CALCULATOR PAGE
-Route::get('/quick-calculator/page1', [QuestionnaireController::class, 'quickQuestion1Form']);
-Route::post('/quick-calculator/page1', [QuestionnaireController::class, 'quickQuestion1Post']);
-Route::get('/quick-calculator/page2', [QuestionnaireController::class, 'quickQuestion2Form']);
-Route::post('/quick-calculator/page2', [QuestionnaireController::class, 'quickQuestion2Post']);
+Route::get('/quick-calculator/page1', [QuestionnaireController::class, 'quickQuestion1']);
+// Route::post('/quick-calculator/page1', [QuestionnaireController::class, 'quickQuestion1Post']);
+// Route::get('/quick-calculator/page{quick_questionnaire:id}', [QuestionnaireController::class, 'quickQuestion1Form']);
+// Route::post('/quick-calculator/page{quick_questionnaire:id}', [QuestionnaireController::class, 'quickQuestion1Post']);
+Route::get('/quick-calculator/page2/{quick_questionnaire:id}', [QuestionnaireController::class, 'quickQuestion2']);
+// Route::post('/quick-calculator/page2', [QuestionnaireController::class, 'quickQuestion2Post']);
 Route::get('/quick-calculator/results', [QuestionnaireController::class, 'results']);
 
 

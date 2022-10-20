@@ -1,5 +1,4 @@
 
-<hr>
 
 <footer class="w3-padding w3-center w3-dark-gray w3-bottom">
 
