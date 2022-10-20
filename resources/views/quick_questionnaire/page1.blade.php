@@ -10,11 +10,11 @@
         <h1 class="w3-text-blue">Plastic Waste Quick Calculator</h1>
 
         <section id="form">
-			<form name="quickQuestionnaireForm" action="#" method="POST">
+			<form name="quickQuestionnaireForm" action="/quick-calculator/page2" method="POST">
 
                 <fieldset id="q1_fieldset">
                     <!-- FIX: Display first question from quick_questions table. -->
-                    <legend>Where do you want to reduce plastic waste? <?= $questionnaire_questions->question ?></legend>
+                    <legend>Where do you want to reduce plastic waste? <?= $quick_questions->question ?></legend>
                     <!-- FIX: Display questions via Laravel loop from quick_choices table. -->
                     <p id="caption_question1">
                         <input type="radio" name="f__question1" id="in_home" value="home"/>
@@ -35,12 +35,23 @@
 
 			</form>
 		</section>
+
+        <hr>
+
+        <br>
+        <section>
+            <!-- FIX: Implement PHP loop through quick_questionnaire->choices (where question_id = 1), similar to CMS List page. -->
+            <?php foreach($quick_choices as $quick_choice): ?>
+                <a href="/quick-calculator/page2/<?= $quick_choice->choice ?>" class="w3-button w3-blue"><?= $quick_choice->choice ?></a>
+                <br>
+            <?php endforeach; ?>
+        </section>
 		
 
-        <a href="/quick-calculator/page2">Next</a>
+        <!-- <a href="/quick-calculator/page2">Next</a> -->
 
         <!--DELETE COOKIES: Delete after debug complete.-->
-	<p><input type="button" id="btnDel" value="Delete your Stored Information" /></p>
+	    <!-- <p><input type="button" id="btnDel" value="Delete your Stored Information" /></p> -->
 
 
     </section>
