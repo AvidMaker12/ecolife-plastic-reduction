@@ -25,7 +25,7 @@
 
         <!-- NOTE: Fix client user sign-in nav links logic. -->
         <?php if(Auth::check()): ?>
-            <?= auth()->user()->f_name ?> <?= auth()->user()->l_name ?> | 
+            | <?= auth()->user()->f_name ?> <?= auth()->user()->l_name ?>
             <a href="/logout">Log Out</a> | 
             <a href="/dashboard">Account</a>
         <?php else: ?>

@@ -18,9 +18,15 @@
                         <?php if($plastic->category == $quick_choice->choice): ?> <!-- If the category names match, then output respective plastic products. -->
                             <ul>
                                 <li>
+                                    <div class="w3-margin-bottom">
+                                        <?php if($plastic->image): ?>
+                                            <img src="<?= asset('storage/'.$plastic->image) ?>" height="200">
+                                        <?php endif; ?>
+                                    </div>
                                     <h3><?= $plastic->plastic_product_name ?></h3>
-                                    <?= $plastic->description ?>
-                                </li>
+                                    <?= $plastic->description ?><br>
+                                    <?= $plastic->product_stat ?>
+                                </li><hr><br>
                             </ul>
                             <!-- Add JavaScript dropdown feature here to hide/display plastic product description. -->
                         <?php endif; ?>

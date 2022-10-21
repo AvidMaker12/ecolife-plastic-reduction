@@ -116,12 +116,12 @@ class QuestionnaireController extends Controller
     //         ->with('message', 'Questionnaire has been edited.');
     // }
 
-
-    public function quickQuestion1(QuickQuestion $quick_questions) // Pass in 'quick_questions' id via 'quick_questions' variable.
+    public function quickQuestion1() // Pass in 'quick_questions' id via 'quick_questions' variable.
     {
         return view('quick_questionnaire.page1', [
-            'quick_questions' => $quick_questions, // Populate page with data from table 'quick_questions' by storing data in array 'quick_questions', which retreives data from model 'QuickQuestion' fetch all().
-            'quick_choices' => QuickChoice::all() // Populate page with data from table 'quick_choices' by storing data in array 'quick_choices', which retreives data from model 'QuickChoice' fetch all().
+            'quick_questions' => QuickQuestion::all(), // Populate page with data from table 'quick_questions' by storing data in array 'quick_questions', which retreives data from model 'QuickQuestion' fetch all().
+            'quick_choices' => QuickChoice::all(), // Populate page with data from table 'quick_choices' by storing data in array 'quick_choices', which retreives data from model 'QuickChoice' fetch all().
+            'segmentURL' => \Request::segment(2)
         ]);
     }
 
