@@ -1,5 +1,7 @@
 @extends('layout_console.console-header-footer')
 
+@section('title') {{' - Console'}} @endsection <!-- Dynamic page tab title. -->
+
 @section('content')
 
     <section class="w3-padding">
