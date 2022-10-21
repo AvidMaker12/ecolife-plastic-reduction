@@ -83,15 +83,15 @@ Route::get('/console/clients/delete/{clientaccount:id}', [ClientAccountControlle
 Route::get('/console/plastic-products/list', [PlasticProductController::class, 'list'])->middleware('auth');
 Route::get('/console/plastic-products/add', [PlasticProductController::class, 'addForm'])->middleware('auth');
 Route::post('/console/plastic-products/add', [PlasticProductController::class, 'add'])->middleware('auth');
-Route::get('/console/plastic-products/edit/{plasticproduct:id}', [PlasticProductController::class, 'editForm'])->where('plasticproduct', '[0-9]+')->middleware('auth');
-Route::post('/console/plastic-products/edit/{plasticproduct:id}', [PlasticProductController::class, 'edit'])->where('plasticproduct', '[0-9]+')->middleware('auth');
-Route::get('/console/plastic-products/delete/{plasticproduct:id}', [PlasticProductController::class, 'delete'])->where('plasticproduct', '[0-9]+')->middleware('auth');
+Route::get('/console/plastic-products/edit/{plastic_product:id}', [PlasticProductController::class, 'editForm'])->where('plastic_product', '[0-9]+')->middleware('auth');
+Route::post('/console/plastic-products/edit/{plastic_product:id}', [PlasticProductController::class, 'edit'])->where('plastic_product', '[0-9]+')->middleware('auth');
+Route::get('/console/plastic-products/delete/{plastic_product:id}', [PlasticProductController::class, 'delete'])->where('plastic_product', '[0-9]+')->middleware('auth');
 
-Route::get('/console/plastic-products/icon/{plasticproduct:id}', [PlasticProductController::class, 'iconForm'])->where('plasticproduct', '[0-9]+')->middleware('auth');
-Route::post('/console/plastic-products/icon/{plasticproduct:id}', [PlasticProductController::class, 'icon'])->where('plasticproduct', '[0-9]+')->middleware('auth'); // Text in quotes in brackets are public functions defined in respective controllers.
+Route::get('/console/plastic-products/icon/{plastic_product:id}', [PlasticProductController::class, 'iconForm'])->where('plastic_product', '[0-9]+')->middleware('auth');
+Route::post('/console/plastic-products/icon/{plastic_product:id}', [PlasticProductController::class, 'icon'])->where('plastic_product', '[0-9]+')->middleware('auth'); // Text in quotes in brackets are public functions defined in respective controllers.
 
-Route::get('/console/plastic-products/image/{plasticproduct:id}', [PlasticProductController::class, 'imageForm'])->where('plastic_product', '[0-9]+')->middleware('auth');
-Route::post('/console/plastic-products/image/{plasticproduct:id}', [PlasticProductController::class, 'image'])->where('plastic_product', '[0-9]+')->middleware('auth');
+Route::get('/console/plastic-products/image/{plastic_product:id}', [PlasticProductController::class, 'imageForm'])->where('plastic_product', '[0-9]+')->middleware('auth');
+Route::post('/console/plastic-products/image/{plastic_product:id}', [PlasticProductController::class, 'image'])->where('plastic_product', '[0-9]+')->middleware('auth');
 
 
 // CONSOLE QUESTIONNAIRE CMS PAGES

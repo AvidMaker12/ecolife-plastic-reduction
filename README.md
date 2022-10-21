@@ -12,6 +12,12 @@ The CMS uses the public storage driver, make sure to update the .env file to:
 FILESYSTEM_DRIVER=public
 ```
 
+To create the symbolic link, use the storage:link Artisan command:
+
+```
+php artisan storage:link
+```
+
 The database setup includes migrations and seeding. Run the following command to initialize the database:
 
 ```

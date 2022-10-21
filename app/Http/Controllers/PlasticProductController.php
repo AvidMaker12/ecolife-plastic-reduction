@@ -25,7 +25,28 @@ class PlasticProductController extends Controller
         return view('plastic_products.add');
     }
     
-    public function add()
+    // public function add()
+    // {
+
+    //     $attributes = request()->validate([
+    //         'plastic_product_name' => 'required',
+    //         'category' => 'required',
+    //         'description' => 'required',
+    //         'product_stat' => 'required',
+    //     ]);
+
+    //     $plastic_product = new PlasticProduct();
+    //     $plastic_product->plastic_product_name = $attributes['plastic_product_name'];
+    //     $plastic_product->category = $attributes['category'];
+    //     $plastic_product->description = $attributes['description'];
+    //     $plastic_product->product_stat = $attributes['product_stat'];
+    //     $plastic_product->user_id = Auth::user()->id;
+    //     $plastic_product->save();
+
+    //     return redirect('/console/plastic-products/list')
+    //         ->with('message', 'Plastic product has been added.');
+    // }
+    public function add(PlasticProduct $plastic_product)
     {
 
         $attributes = request()->validate([
@@ -33,6 +54,7 @@ class PlasticProductController extends Controller
             'category' => 'required',
             'description' => 'required',
             'product_stat' => 'required',
+            'image' => 'required|image',
         ]);
 
         $plastic_product = new PlasticProduct();
@@ -41,6 +63,8 @@ class PlasticProductController extends Controller
         $plastic_product->description = $attributes['description'];
         $plastic_product->product_stat = $attributes['product_stat'];
         $plastic_product->user_id = Auth::user()->id;
+        $path = request()->file('image')->store('plastic_products');
+        $plastic_product->image = $path;
         $plastic_product->save();
 
         return redirect('/console/plastic-products/list')
@@ -118,16 +142,17 @@ class PlasticProductController extends Controller
     {
 
         $attributes = request()->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image',
+            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         Storage::delete($plastic_product->image);
         
-        // $path = request()->file('image')->store('plastic_products');
-        $path = request()->file('image')->store('plastic_products', 's3');
+        $path = request()->file('image')->store('plastic_products');
+        // $path = request()->file('image')->store('plastic_products', 's3');
 
-        // $plastic_product->image = $path;
-        $plastic_product->image = Storage::disk('s3')->url($path);
+        $plastic_product->image = $path;
+        // $plastic_product->image = Storage::disk('s3')->url($path);
         $plastic_product->save();
         
         return redirect('/console/plastic-products/list')

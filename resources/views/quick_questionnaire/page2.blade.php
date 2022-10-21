@@ -17,7 +17,10 @@
                     <?php foreach($plastic_products as $plastic): ?>
                         <?php if($plastic->category == $quick_choice->choice): ?> <!-- If the category names match, then output respective plastic products. -->
                             <ul>
-                                <li><?= $plastic->plastic_product_name ?><br></li>
+                                <li>
+                                    <h3><?= $plastic->plastic_product_name ?></h3>
+                                    <?= $plastic->description ?>
+                                </li>
                             </ul>
                             <!-- Add JavaScript dropdown feature here to hide/display plastic product description. -->
                         <?php endif; ?>

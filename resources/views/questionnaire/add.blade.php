@@ -13,7 +13,7 @@
 
             <div class="w3-margin-bottom">
                 <label for="question">Question:</label>
-                <input type="question" name="question" id="question" value="<?= old('question') ?>" required>
+                <input type="text" name="question" id="question" value="<?= old('question') ?>" required>
                 
                 <?php if($errors->first('question')): ?>
                     <br>
@@ -23,7 +23,7 @@
 
             <div class="w3-margin-bottom">
                 <label for="choice">Choice:</label>
-                <input type="choice" name="choice" id="choice" value="<?= old('choice') ?>">
+                <input type="text" name="choice" id="choice" value="<?= old('choice') ?>">
 
                 <?php if($errors->first('choice')): ?>
                     <br>

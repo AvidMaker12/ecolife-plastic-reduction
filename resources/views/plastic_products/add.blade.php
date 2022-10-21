@@ -1,109 +1,81 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layout_console.console-header-footer')
 
-        <title>My Portfolio</title>
+@section('content')
 
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="/app.css">
+    <section class="w3-padding">
 
-        <script src="/app.js"></script>
-        
-    </head>
-    <body>
+        <h2>Add to Plastic Products</h2>
 
+        <form method="post" action="/console/plastic-products/add" novalidate class="w3-margin-bottom" enctype="multipart/form-data">
 
-        <header class="w3-padding">
+            <?= csrf_field() ?>
 
-            <h1 class="w3-text-red">Portfolio Console</h1>
+            <div class="w3-margin-bottom">
+                <label for="plastic_product_name">Plastic Product Name:</label>
+                <input type="text" name="plastic_product_name" id="plastic_product_name" value="<?= old('plastic_product_name') ?>" required>
+                
+                <?php if($errors->first('plastic_product_name')): ?>
+                    <br>
+                    <span class="w3-text-red"><?= $errors->first('plastic_product_name'); ?></span>
+                <?php endif; ?>
+            </div>
 
-            <?php if(Auth::check()): ?>
-                You are logged in as <?= auth()->user()->first ?> <?= auth()->user()->last ?> | 
-                <a href="/console/logout">Log Out</a> | 
-                <a href="/console/dashboard">Dashboard</a> | 
-                <a href="/">Website Home Page</a>
-            <?php else: ?>
-                <a href="/">Return to My Portfolio</a>
-            <?php endif; ?>
+            <div class="w3-margin-bottom">
+                <label for="category">Category:</label>
+                <input type="text" name="category" id="category" value="<?= old('category') ?>">
 
-        </header>
+                <?php if($errors->first('category')): ?>
+                    <br>
+                    <span class="w3-text-red"><?= $errors->first('category'); ?></span>
+                <?php endif; ?>
+            </div>
+            
+            <div class="w3-margin-bottom">
+                <label for="description">Description:</label>
+                <textarea name="description" cols="40" rows="3" id="description" value="<?= old('description') ?>"></textarea>
 
-        <hr>
+                <?php if($errors->first('description')): ?>
+                    <br>
+                    <span class="w3-text-red"><?= $errors->first('description'); ?></span>
+                <?php endif; ?>
+            </div>
+            
+            <div class="w3-margin-bottom">
+                <label for="product_stat">Plastic Product Statistics:</label>
+                <input type="text" name="product_stat" id="product_stat" value="<?= old('product_stat') ?>">
 
-        <section class="w3-padding">
+                <?php if($errors->first('product_stat')): ?>
+                    <br>
+                    <span class="w3-text-red"><?= $errors->first('product_stat'); ?></span>
+                <?php endif; ?>
+            </div>
+            
+            <div class="w3-margin-bottom">
+                <label for="icon">Icon:</label>
+                <input type="file" name="icon" id="icon" value="<?= old('icon') ?>" required>
+                
+                <?php if($errors->first('icon')): ?>
+                    <br>
+                    <span class="w3-text-red"><?= $errors->first('icon'); ?></span>
+                <?php endif; ?>
+            </div>
 
-            <h2>Add Project</h2>
+            <div class="w3-margin-bottom">
+                <label for="image">Image:</label>
+                <input type="file" name="image" id="image" value="<?= old('image') ?>" required>
+                
+                <?php if($errors->first('image')): ?>
+                    <br>
+                    <span class="w3-text-red"><?= $errors->first('image'); ?></span>
+                <?php endif; ?>
+            </div>
 
-            <form method="post" action="/console/projects/add" novalidate class="w3-margin-bottom">
+            <button type="submit" class="w3-button w3-green">Add to Plastic Products</button>
 
-                <?= csrf_field() ?>
+        </form>
 
-                <div class="w3-margin-bottom">
-                    <label for="title">Title:</label>
-                    <input type="title" name="title" id="title" value="<?= old('title') ?>" required>
-                    
-                    <?php if($errors->first('title')): ?>
-                        <br>
-                        <span class="w3-text-red"><?= $errors->first('title'); ?></span>
-                    <?php endif; ?>
-                </div>
+        <a href="/console/plastic-products/list">Back to Plastic Products List</a>
 
-                <div class="w3-margin-bottom">
-                    <label for="url">URL:</label>
-                    <input type="url" name="url" id="url" value="<?= old('url') ?>">
+    </section>
 
-                    <?php if($errors->first('url')): ?>
-                        <br>
-                        <span class="w3-text-red"><?= $errors->first('url'); ?></span>
-                    <?php endif; ?>
-                </div>
-
-                <div class="w3-margin-bottom">
-                    <label for="slug">Slug:</label>
-                    <input type="text" name="slug" id="slug" value="<?= old('slug') ?>" required>
-
-                    <?php if($errors->first('slug')): ?>
-                        <br>
-                        <span class="w3-text-red"><?= $errors->first('slug'); ?></span>
-                    <?php endif; ?>
-                </div>
-
-                <div class="w3-margin-bottom">
-                    <label for="content">Content:</label>
-                    <textarea name="content" id="content" required><?= old('content') ?></textarea>
-
-                    <?php if($errors->first('content')): ?>
-                        <br>
-                        <span class="w3-text-red"><?= $errors->first('content'); ?></span>
-                    <?php endif; ?>
-                </div>
-
-                <div class="w3-margin-bottom">
-                    <label for="type_id">Type:</label>
-                    <select name="type_id" id="type_id">
-                        <option></option>
-                        <?php foreach($types as $type): ?>
-                            <option value="<?= $type->id ?>"
-                                <?= $type->id == old('type_id') ? 'selected' : '' ?>>
-                                <?= $type->title ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                    <?php if($errors->first('type_id')): ?>
-                        <br>
-                        <span class="w3-text-red"><?= $errors->first('type_id'); ?></span>
-                    <?php endif; ?>
-                </div>
-
-                <button type="submit" class="w3-button w3-green">Add Project</button>
-
-            </form>
-
-            <a href="/console/projects/list">Back to Project List</a>
-
-        </section>
-
-    </body>
-</html>
+@endsection
