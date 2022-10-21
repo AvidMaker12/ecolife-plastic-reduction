@@ -52,7 +52,7 @@ Route::get('/quick-calculator/page1', [QuestionnaireController::class, 'quickQue
 // Route::post('/quick-calculator/page1', [QuestionnaireController::class, 'quickQuestion1Post']);
 // Route::get('/quick-calculator/page{quick_questionnaire:id}', [QuestionnaireController::class, 'quickQuestion1Form']);
 // Route::post('/quick-calculator/page{quick_questionnaire:id}', [QuestionnaireController::class, 'quickQuestion1Post']);
-Route::get('/quick-calculator/page2/{quick_questionnaire:id}', [QuestionnaireController::class, 'quickQuestion2']);
+Route::get('/quick-calculator/page2/{quick_choices:slug}', [QuestionnaireController::class, 'quickQuestion2'])->where('quick_choices', '[A-z\-]+');
 // Route::post('/quick-calculator/page2', [QuestionnaireController::class, 'quickQuestion2Post']);
 Route::get('/quick-calculator/results', [QuestionnaireController::class, 'results']);
 

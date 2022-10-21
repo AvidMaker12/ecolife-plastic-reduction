@@ -52,10 +52,10 @@ class DatabaseSeeder extends Seeder
         PlasticProduct::factory()->count(4)->create();          // Table foreign keys connections: users
         
         QuestionnaireQuestion::factory()->count(3)->create();   // Table foreign keys connections: users
-        QuestionnaireChoice::factory()->count(3)->create();     // Table foreign keys connections: questionnaire_questions, users
+        QuestionnaireChoice::factory()->count(7)->create();     // Table foreign keys connections: questionnaire_questions, users
         
         QuickQuestion::factory()->count(3)->create();           // Table foreign keys connections: users
-        QuickChoice::factory()->count(6)->create();             // Table foreign keys connections: quick_questions, users
+        QuickChoice::factory()->count(7)->create();             // Table foreign keys connections: quick_questions, users
             
     }
 }

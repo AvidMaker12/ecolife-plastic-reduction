@@ -42,8 +42,8 @@
         <section>
             <!-- FIX: Implement PHP loop through quick_questionnaire->choices (where question_id = 1), similar to CMS List page. -->
             <?php foreach($quick_choices as $quick_choice): ?>
-                <?php if($quick_choice->quick_question_id == 1): ?>
-                    <a href="/quick-calculator/page2/<?= $quick_choice->id ?>" class="w3-button w3-blue"><?= $quick_choice->choice ?></a>
+                <?php if($quick_choice->quick_question_id == 1): ?> <!-- Only show list of question1 choices: 'Home', 'Workplace', 'Travel'. -->
+                    <a href="/quick-calculator/page2/<?= $quick_choice->slug ?>" class="w3-button w3-blue"><?= $quick_choice->choice ?></a>
                     <br>
                 <?php endif; ?>
             <?php endforeach; ?>

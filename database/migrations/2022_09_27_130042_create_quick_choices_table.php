@@ -17,7 +17,9 @@ class CreateQuickChoicesTable extends Migration
             $table->id();
             $table->foreignId('quick_question_id');
             $table->string('choice');
+            $table->string('choice_category')->nullable();
             $table->string('icon')->nullable();
+            $table->string('slug')->nullable();
             $table->foreignId('user_id');
             $table->timestamps();
         });

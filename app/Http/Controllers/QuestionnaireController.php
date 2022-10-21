@@ -117,7 +117,7 @@ class QuestionnaireController extends Controller
     // }
 
 
-    public function quickQuestion1(QuickQuestion $quick_questions)
+    public function quickQuestion1(QuickQuestion $quick_questions) // Pass in 'quick_questions' id via 'quick_questions' variable.
     {
         return view('quick_questionnaire.page1', [
             'quick_questions' => $quick_questions, // Populate page with data from table 'quick_questions' by storing data in array 'quick_questions', which retreives data from model 'QuickQuestion' fetch all().
@@ -125,19 +125,33 @@ class QuestionnaireController extends Controller
         ]);
     }
 
+    // public function quickQuestion2(QuickChoice $quick_choices)
+    // {
+    //     return view('quick_questionnaire.page2', [
+    //         'quick_choices' => $quick_choices, // Populate page with data from table 'quick_choices' by storing data in array 'quick_choices', which retreives data from model 'QuickChoice' fetch all(), which was passed in through the public function parameters.
+    //         'quick_questions' => QuickQuestion::all(), // Populate page with data from table 'quick_questions' by storing data in array 'quick_questions', which retreives data from model 'QuickQuestion' fetch all().
+    //         'plastic_products' => PlasticProduct::all() // Populate page with data from table 'plastic_products' by storing data in array 'plastic_products', which retreives data from model 'PlasticProduct' fetch all().
+    //     ]);
+    // }
     public function quickQuestion2(QuickQuestion $quick_questions)
     {
         return view('quick_questionnaire.page2', [
             'quick_questions' => $quick_questions, // Populate page with data from table 'quick_questions' by storing data in array 'quick_questions', which retreives data from model 'QuickQuestion' fetch all().
             'quick_choices' => QuickChoice::all(), // Populate page with data from table 'quick_choices' by storing data in array 'quick_choices', which retreives data from model 'QuickChoice' fetch all().
-            'plastic_products' => PlasticProduct::all() // Populate page with data from table 'quick_choices' by storing data in array 'quick_choices', which retreives data from model 'QuickChoice' fetch all().
+            'plastic_products' => PlasticProduct::all(), // Populate page with data from table 'plastic_products' by storing data in array 'plastic_products', which retreives data from model 'PlasticProduct' fetch all().
+            'segmentURL' => \Request::segment(3)
         ]);
     }
 
-    // public function quickQuestion1Post(QuickQuestion $quick_questions)
-    // {         
-    //     return redirect('/quick_questionnaire/page2');
-    // }
+    public function currentURL(Request $request)
+    {         
+        $currentURL = $request->fullUrl(); // Show full current URL with parameters.
+        // $currentURL = \URL::full(); // Show full current URL with parameters.
+        // $currentURL = \Request::fullUrl(); // Show full current URL with parameters.
+
+        // $segment = \Request::segment(1);
+        // $segment = $request->segment(1);
+    }
 
 
 

@@ -10,14 +10,15 @@
         <h1 class="w3-text-blue">Plastic Waste Quick Calculator</h1>
 
         <section>
-            <!-- FIX: Implement PHP loop through quick_questionnaire->choices (where question_id = 1), similar to CMS List page. -->
+            <!-- Logic for listing relevant categories that matches question 1 selected choice. -->
             <?php foreach($quick_choices as $quick_choice): ?>
-                <?php if($quick_choice->quick_question_id == 2): ?>
-                    <h2><?= $quick_choice->choice ?></h2>
-                    <br>
+                <?php if($quick_choice->quick_question_id == 2 && $segmentURL == $quick_choice->choice_category): ?>
+                    <h2><?= $quick_choice->choice ?></h2> <!-- Room category names for plastic products. Ex. Kitchen, Restroom, Office. -->
                     <?php foreach($plastic_products as $plastic): ?>
                         <?php if($plastic->category == $quick_choice->choice): ?> <!-- If the category names match, then output respective plastic products. -->
-                            <?= $plastic->plastic_product_name ?><br>
+                            <ul>
+                                <li><?= $plastic->plastic_product_name ?><br></li>
+                            </ul>
                             <!-- Add JavaScript dropdown feature here to hide/display plastic product description. -->
                         <?php endif; ?>
                     <?php endforeach; ?>
