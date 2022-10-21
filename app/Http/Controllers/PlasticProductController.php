@@ -25,27 +25,6 @@ class PlasticProductController extends Controller
         return view('plastic_products.add');
     }
     
-    // public function add()
-    // {
-
-    //     $attributes = request()->validate([
-    //         'plastic_product_name' => 'required',
-    //         'category' => 'required',
-    //         'description' => 'required',
-    //         'product_stat' => 'required',
-    //     ]);
-
-    //     $plastic_product = new PlasticProduct();
-    //     $plastic_product->plastic_product_name = $attributes['plastic_product_name'];
-    //     $plastic_product->category = $attributes['category'];
-    //     $plastic_product->description = $attributes['description'];
-    //     $plastic_product->product_stat = $attributes['product_stat'];
-    //     $plastic_product->user_id = Auth::user()->id;
-    //     $plastic_product->save();
-
-    //     return redirect('/console/plastic-products/list')
-    //         ->with('message', 'Plastic product has been added.');
-    // }
     public function add(PlasticProduct $plastic_product)
     {
 
@@ -54,6 +33,7 @@ class PlasticProductController extends Controller
             'category' => 'required',
             'description' => 'required',
             'product_stat' => 'required',
+            'icon' => 'required|image',
             'image' => 'required|image',
         ]);
 
@@ -63,8 +43,10 @@ class PlasticProductController extends Controller
         $plastic_product->description = $attributes['description'];
         $plastic_product->product_stat = $attributes['product_stat'];
         $plastic_product->user_id = Auth::user()->id;
-        $path = request()->file('image')->store('plastic_products');
-        $plastic_product->image = $path;
+        $path_icon = request()->file('icon')->store('plastic_products');
+        $plastic_product->icon = $path_icon;
+        $path_image = request()->file('image')->store('plastic_products');
+        $plastic_product->image = $path_image;
         $plastic_product->save();
 
         return redirect('/console/plastic-products/list')
@@ -92,6 +74,7 @@ class PlasticProductController extends Controller
         $plastic_product->category = $attributes['category'];
         $plastic_product->description = $attributes['description'];
         $plastic_product->product_stat = $attributes['product_stat'];
+        $plastic_product->user_id = Auth::user()->id;
         $plastic_product->save();
 
         return redirect('/console/plastic-products/list')
