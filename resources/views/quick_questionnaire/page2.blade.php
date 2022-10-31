@@ -7,9 +7,9 @@
 @section('content')
     <section class="w3-padding">
 
-        <h1 class="w3-text-blue">Plastic Waste Quick Calculator</h1>
+        <h1 class="w3-text-blue">Plastic Waste Quick Calculator</h1><br>
 
-        <section>
+        <section class="w3-padding">
             <!-- Logic for listing relevant categories that matches question 1 selected choice. -->
             <?php foreach($quick_choices as $quick_choice): ?>
                 <?php if($quick_choice->quick_question_id == 2 && $segmentURL == $quick_choice->choice_category): ?>
@@ -25,6 +25,7 @@
                                     </div>
                                     <h3><?= $plastic->plastic_product_name ?></h3>
                                     <?= $plastic->description ?><br>
+                                    <h4>Statistics:</h4>
                                     <?= $plastic->product_stat ?>
                                 </li><hr><br>
                             </ul>

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Console Log In | EcoLife</title>
+        <title>Log In | EcoLife</title>
 
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="/app.css">
@@ -14,19 +14,15 @@
     </head>
     <body>
 
-        <header class="w3-padding">
+        <header class="w3-padding w3-center">
 
-            <h1 class="w3-text-red">Console</h1>
-
-            <a href="/">Return to Website Home Page</a>
+            <h1 class="w3-text-red">Log In</h1>
 
         </header>
 
-        <hr>
+        <section class="w3-padding w3-center">
 
-        <section class="w3-padding">
-
-            <form method="post" action="/console/login" novalidate>
+            <form method="post" action="/login" novalidate>
 
                 <?= csrf_field() ?>
 
@@ -54,9 +50,17 @@
 
             </form>
 
+            <br>
+            <a href="/">Back to Home Page</a>
+
         </section>
 
     </body>
+
+    <!-- FIX: Add custom footer. -->
+
+    <!-- FIX: Add JS DOM form validation. -->
+
 </html>
 
 

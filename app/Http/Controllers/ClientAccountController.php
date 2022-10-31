@@ -3,12 +3,51 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use App\Models\ClientAccount;
 
 class ClientAccountController extends Controller
 {
+    //--- Login Public Functions ---
+
+    public function logout()
+    {
+        auth()->logout();
+        return redirect('/');
+    }
+
+    public function loginForm()
+    {
+        return view('client_accounts.login');
+    }
+
+    public function login()
+    {
+        $attributes = request()->validate([  // Variable: Get form process data via request() Laravel funciton and validate.
+            'email' => 'required|email',  // Laravel validation rules.
+            'password' => 'required',
+        ]);
+
+        if(auth()->attempt($attributes))
+        {
+            return redirect('/dashboard');
+        }
+        
+        return back()
+            ->withInput()
+            ->withErrors(['email' => 'Invalid email/password combination']);
+    }
+
+    public function dashboard()
+    {
+        return view('client_accounts.dashboard');
+    }
+
+
+    //--- Console CMS Public Functions ---
+    
     public function list()
     {
 

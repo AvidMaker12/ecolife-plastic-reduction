@@ -57,9 +57,18 @@ Route::get('/quick-calculator/page2/{quick_choices:slug}', [QuestionnaireControl
 Route::get('/quick-calculator/results', [QuestionnaireController::class, 'results']);
 
 
+
+// USER/CLIENT LOGIN PAGE
+Route::get('/logout', [ClientAccountController::class, 'logout'])->middleware('auth');
+Route::get('/login', [ClientAccountController::class, 'loginForm'])->middleware('guest');
+Route::post('/login', [ClientAccountController::class, 'login'])->middleware('guest');
+Route::get('/dashboard', [ClientAccountController::class, 'dashboard'])->middleware('auth');
+
+
+
 // CONSOLE LOGIN PAGE
 Route::get('/console/logout', [ConsoleController::class, 'logout'])->middleware('auth');
-Route::get('/console/login', [ConsoleController::class, 'loginForm'])->middleware('guest');
+Route::get('/console/login', [ConsoleController::class, 'loginForm'])->middleware('guest')->name('login');
 Route::post('/console/login', [ConsoleController::class, 'login'])->middleware('guest');
 Route::get('/console/dashboard', [ConsoleController::class, 'dashboard'])->middleware('auth');
 
@@ -86,13 +95,10 @@ Route::post('/console/plastic-products/add', [PlasticProductController::class, '
 Route::get('/console/plastic-products/edit/{plastic_product:id}', [PlasticProductController::class, 'editForm'])->where('plastic_product', '[0-9]+')->middleware('auth');
 Route::post('/console/plastic-products/edit/{plastic_product:id}', [PlasticProductController::class, 'edit'])->where('plastic_product', '[0-9]+')->middleware('auth');
 Route::get('/console/plastic-products/delete/{plastic_product:id}', [PlasticProductController::class, 'delete'])->where('plastic_product', '[0-9]+')->middleware('auth');
-
 Route::get('/console/plastic-products/icon/{plastic_product:id}', [PlasticProductController::class, 'iconForm'])->where('plastic_product', '[0-9]+')->middleware('auth');
 Route::post('/console/plastic-products/icon/{plastic_product:id}', [PlasticProductController::class, 'icon'])->where('plastic_product', '[0-9]+')->middleware('auth'); // Text in quotes in brackets are public functions defined in respective controllers.
-
 Route::get('/console/plastic-products/image/{plastic_product:id}', [PlasticProductController::class, 'imageForm'])->where('plastic_product', '[0-9]+')->middleware('auth');
 Route::post('/console/plastic-products/image/{plastic_product:id}', [PlasticProductController::class, 'image'])->where('plastic_product', '[0-9]+')->middleware('auth');
-
 
 // CONSOLE QUESTIONNAIRE CMS PAGES
 Route::get('/console/questionnaire/list', [QuestionnaireController::class, 'list'])->middleware('auth');
@@ -100,6 +106,9 @@ Route::get('/console/questionnaire/add', [QuestionnaireController::class, 'addFo
 Route::post('/console/questionnaire/add', [QuestionnaireController::class, 'add'])->middleware('auth');
 Route::get('/console/questionnaire/edit/{questionnaire:id}', [QuestionnaireController::class, 'editForm'])->where('questionnaire', '[0-9]+')->middleware('auth');
 Route::post('/console/questionnaire/edit/{questionnaire:id}', [QuestionnaireController::class, 'edit'])->where('questionnaire', '[0-9]+')->middleware('auth');
+
+
+
 
 
 // CONSOLE TYPES CMS PAGES
